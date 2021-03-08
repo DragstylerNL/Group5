@@ -1,20 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{    
+{
     private bool tap, swipeUp, swipeDown, swipeLeft, swipeRight;
     private bool isDraging = false;
     private Vector2 startTouch, swipeDelta;
     [SerializeField]
     private float swipeDeadzone;
 
+    public Action OnSwipeUp;
+    public Action OnSwipeDown;
+    public Action OnSwipeLeft;
+    public Action OnSwipeRight;
+
     public Vector2 SwipeDelta { get { return swipeDelta; } }
     public bool SwipeUp { get { return swipeUp; } }
     public bool SwipeDown { get { return swipeDown; } }
     public bool SwipeLeft { get { return swipeLeft; } }
     public bool SwipeRight { get { return swipeRight; } }
+
+
 
 
     void Update()
@@ -91,7 +99,7 @@ public class PlayerController : MonoBehaviour
             float y = swipeDelta.y;
 
             // we only want one boolean to be true out of x and y, so the biggest deviation from zero wins
-            if (Mathf.Abs(x) <= Mathf.Abs(y) )
+            if (Mathf.Abs(x) <= Mathf.Abs(y))
             {
 
                 if (y < 0)
@@ -125,22 +133,25 @@ public class PlayerController : MonoBehaviour
         if (swipeUp)
         {
             Debug.Log("up");
-            StartCoroutine(Jump());       
+            OnSwipeUp();
         }
 
         if (swipeDown)
         {
-            Debug.Log("down");      
+            Debug.Log("down");
+            OnSwipeDown();
         }
 
         if (swipeLeft)
         {
-            Debug.Log("Left");       
+            Debug.Log("Left");
+            OnSwipeLeft();
         }
 
         if (swipeRight)
         {
-            Debug.Log("Right");          
+            Debug.Log("Right");
+            OnSwipeRight();
         }
     }
 
@@ -155,13 +166,4 @@ public class PlayerController : MonoBehaviour
         tap = swipeDown = swipeUp = swipeLeft = swipeRight = false;
     }
 
-    IEnumerator Jump()
-    {
-        transform.position = new Vector3(0, transform.position.y + 7 * Time.deltaTime, 0);
-
-        yield return new WaitForSeconds(1);
-
-        ResetInput();
-    }
-
-} 
+}

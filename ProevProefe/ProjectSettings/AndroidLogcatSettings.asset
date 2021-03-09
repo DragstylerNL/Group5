@@ -3,8 +3,8 @@
     "m_SelectedPackage": {
         "deviceId": "ZY322HHSK4",
         "name": "com.DefaultCompany.ProevProefe",
-        "processId": 31291,
-        "exited": true
+        "processId": 32651,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -13,6 +13,12 @@
             "name": "com.DefaultCompany.ProevProefe",
             "processId": 31291,
             "exited": true
+        },
+        {
+            "deviceId": "ZY322HHSK4",
+            "name": "com.DefaultCompany.ProevProefe",
+            "processId": 32651,
+            "exited": false
         }
     ],
     "m_Tags": {

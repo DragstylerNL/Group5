@@ -9,7 +9,11 @@ public class Up : MonoBehaviour
     [SerializeField]
     private PlayerController PC;
     [SerializeField]
-    private int wait = 1;
+    private int wait = 2;
+    [SerializeField]
+    private int jumpHeight = 650;
+
+    public bool NI = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,22 +24,19 @@ public class Up : MonoBehaviour
 
     public void doJump()
     {
+        if (NI) return;
         StartCoroutine(Jump());
+        
     }
 
     IEnumerator Jump()
     {
-
-        RB.constraints = RigidbodyConstraints.FreezePositionY;
-        RB.detectCollisions = false;
+        RB.velocity = new Vector3(RB.velocity.x, RB.velocity.y + jumpHeight*Time.deltaTime, RB.velocity.z);
+        NI = true;
 
         yield return new WaitForSeconds(wait);
 
-        RB.constraints = RigidbodyConstraints.None;
-        RB.detectCollisions = true;
-
+        NI = false;
         Debug.Log("gesuas");
-
-        //ResetInput();
     }
 }

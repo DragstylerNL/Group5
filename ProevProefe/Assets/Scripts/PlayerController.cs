@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
+{    
     private bool tap, swipeUp, swipeDown, swipeLeft, swipeRight;
     private bool isDraging = false;
     private Vector2 startTouch, swipeDelta;
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
             float y = swipeDelta.y;
 
             // we only want one boolean to be true out of x and y, so the biggest deviation from zero wins
-            if (Mathf.Abs(x) <= Mathf.Abs(y))
+            if (Mathf.Abs(x) <= Mathf.Abs(y) )
             {
 
                 if (y < 0)
@@ -133,25 +133,25 @@ public class PlayerController : MonoBehaviour
         if (swipeUp)
         {
             Debug.Log("up");
-            OnSwipeUp();
+            OnSwipeUp?.Invoke();
         }
 
         if (swipeDown)
         {
             Debug.Log("down");
-            OnSwipeDown();
+            OnSwipeDown?.Invoke();
         }
 
         if (swipeLeft)
         {
             Debug.Log("Left");
-            OnSwipeLeft();
+            OnSwipeLeft?.Invoke();
         }
 
         if (swipeRight)
         {
             Debug.Log("Right");
-            OnSwipeRight();
+            OnSwipeRight?.Invoke();
         }
     }
 
@@ -166,4 +166,4 @@ public class PlayerController : MonoBehaviour
         tap = swipeDown = swipeUp = swipeLeft = swipeRight = false;
     }
 
-}
+} 

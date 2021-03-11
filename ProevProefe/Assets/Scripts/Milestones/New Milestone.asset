@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: New Milestone
+  m_EditorClassIdentifier: Assembly-CSharp::MileStone
+  MilestoneName: De lange tocht
+  GoalAmount: 1000
+  CurrentGoalAmount: 0
+  reward: {fileID: 919132149155446097, guid: abf202676eca0ae409641962b5a72334, type: 3}
+  Description: Loop 1000 meter
